@@ -3,6 +3,13 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { FunctionComponent, ReactNode } from "react";
 import Link from "next/link";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,16 +37,24 @@ const RootLayout: FunctionComponent<RootLayoutProps> = ({ children }) => {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <header className="border-b border-border bg-background px-6 py-4 flex items-center justify-between">
-          <span className="text-sm font-semibold tracking-tight">Ludic Matricula</span>
-          <nav className="flex items-center gap-4">
-            <Link href="/games" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Games
-            </Link>
-            <Link href="/login" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Login
-            </Link>
-          </nav>
+        <header className="border-b border-border bg-background px-6 py-3 flex items-center justify-between">
+          <span className="text-sm font-semibold tracking-tight">
+            Ludic Matricula
+          </span>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                  <Link href="/games">Games</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                  <Link href="/login">Login</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
         </header>
         <main className="flex-1 bg-background p-6">
           {children}
