@@ -38,27 +38,34 @@ const RootLayout: FunctionComponent<RootLayoutProps> = ({ children }) => {
     >
       <body className="min-h-full flex flex-col">
         <header className="border-b border-border bg-background px-6 py-3 flex items-center justify-between">
-          <span className="text-sm font-semibold tracking-tight">
+          <Link
+            href="/"
+            className="text-sm font-semibold tracking-tight hover:opacity-80 transition-opacity"
+          >
             Ludic Matricula
-          </span>
+          </Link>
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink
+                  asChild
+                  className={navigationMenuTriggerStyle()}
+                >
                   <Link href="/games">Games</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                <NavigationMenuLink
+                  asChild
+                  className={navigationMenuTriggerStyle()}
+                >
                   <Link href="/login">Login</Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </header>
-        <main className="flex-1 bg-background p-6">
-          {children}
-        </main>
+        <main className="flex-1 bg-background p-6">{children}</main>
       </body>
     </html>
   );
